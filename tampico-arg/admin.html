@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Foro Urbex</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body class="bg-stone-900 text-stone-100 font-serif">
+
+    <!-- Header Admin -->
+    <header class="bg-red-950 border-b-4 border-red-900 py-3 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-xs bg-red-900 px-2 py-1 uppercase tracking-widest text-red-200">ADMINISTRACIÓN</span>
+                <h1 class="text-sm font-bold tracking-wider">MODERACIÓN DE REPORTES CIUDADANOS</h1>
+            </div>
+            <a href="foro.html" class="text-xs font-sans text-stone-300 hover:underline">&larr; Volver al Foro Público</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        
+        <!-- Pantalla de Login Sencilla -->
+        <div id="login-section" class="bg-stone-800 p-8 border border-stone-700 shadow-xl max-w-md mx-auto space-y-4">
+            <h2 class="text-lg font-bold font-mono text-amber-400">Acceso Restringido</h2>
+            <p class="text-xs text-stone-300">Ingrese la clave de administrador para gestionar las publicaciones del foro.</p>
+            <input type="password" id="admin-pass" placeholder="Contraseña (ej. admin123)" class="w-full p-2 bg-stone-900 border border-stone-700 text-xs text-white font-mono focus:outline-none focus:border-amber-500">
+            <button id="btn-login" class="w-full bg-red-800 hover:bg-red-900 text-white font-mono text-xs uppercase py-3 tracking-widest font-bold transition-colors">
+                Ingresar al Panel
+            </button>
+            <p id="error-msg" class="text-xs text-red-400 hidden font-mono">Contraseña incorrecta.</p>
+        </div>
+
+        <!-- Panel de Gestión (Oculto hasta iniciar sesión) -->
+        <div id="dashboard-section" class="hidden space-y-6">
+            <div class="flex justify-between items-center border-b border-stone-700 pb-4">
+                <div>
+                    <h2 class="text-xl font-bold font-sans text-amber-400">Lista de Publicaciones Activas</h2>
+                    <p class="text-xs text-stone-400 font-mono">Aquí puedes revisar, moderar y eliminar reportes de los usuarios.</p>
+                </div>
+                <button id="btn-logout" class="bg-stone-700 hover:bg-stone-600 text-xs font-mono px-4 py-2 uppercase">Cerrar Sesión</button>
+            </div>
+
+            <!-- Contenedor donde se listarán los posts para borrar -->
+            <div id="admin-posts-list" class="space-y-4">
+                <!-- Se cargan dinámicamente -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Script del Panel Admin -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginSection = document.getElementById("login-section");
+            const dashboardSection = document.getElementById("dashboard-section");
+            const btnLogin = document.getElementById("btn-login");
+            const adminPass = document.getElementById("admin-pass");
+            const errorMsg = document.getElementById("error-msg");
+            const btnLogout = document.getElementById("btn-logout");
+            const adminPostsList = document.getElementById("admin-posts-list");
+
+            // Contraseña de administrador por defecto (puedes cambiarla aquí)
+            const PASSWORD_SECRETA = "admin123";
+
+            btnLogin.addEventListener("click", () => {
+                if (adminPass.value === PASSWORD_SECRETA) {
+                    loginSection.classList.add("hidden");
+                    dashboardSection.classList.remove("hidden");
+                    cargarPostsAdmin();
+                } else {
+                    errorMsg.classList.remove("hidden");
+                }
+            });
+
+            btnLogout.addEventListener("click", () => {
+                dashboardSection.classList.add("hidden");
+                loginSection.classList.remove("hidden");
+                adminPass.value = "";
+                errorMsg.classList.add("hidden");
+            });
+
+            function cargarPostsAdmin() {
+                adminPostsList.innerHTML = "";
+                let posts = JSON.parse(localStorage.getItem("foro_posts")) || [];
+
+                if (posts.length === 0) {
+                    adminPostsList.innerHTML = `<p class="text-xs font-mono text-stone-400 italic">No hay publicaciones registradas en este momento.</p>`;
+                    return;
+                }
+
+                posts.forEach(post => {
+                    const item = document.createElement("div");
+                    item.className = "bg-stone-800 p-4 border border-stone-700 flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0";
+                    
+                    item.innerHTML = `
+                        <div class="space-y-1 max-w-xl">
+                            <span class="text-[10px] font-mono bg-red-900 text-red-200 px-2 py-0.5">@${post.usuario}</span>
+                            <h4 class="text-sm font-bold text-stone-200 mt-1">${post.ubicacion}</h4>
+                            <p class="text-xs text-stone-400">${post.comentario}</p>
+                        </div>
+                        <button onclick="eliminarPost(${post.id})" class="bg-red-700 hover:bg-red-800 text-white font-mono text-xs px-4 py-2 uppercase tracking-wider transition-colors shrink-0">
+                            Eliminar Reporte
+                        </button>
+                    `;
+                    adminPostsList.appendChild(item);
+                });
+            }
+
+            // Función global para eliminar un post por su ID
+            window.eliminarPost = function(id) {
+                if (confirm("¿Estás seguro de que deseas eliminar este reporte permanentemente?")) {
+                    let posts = JSON.parse(localStorage.getItem("foro_posts")) || [];
+                    posts = posts.filter(p => p.id !== id);
+                    localStorage.setItem("foro_posts", JSON.stringify(posts));
+                    cargarPostsAdmin();
+                }
+            };
+        });
+    </script>
+</body>
+</html>
