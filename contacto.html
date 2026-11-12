@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buzón de Contacto y Soporte - CIT</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body class="bg-stone-100 text-stone-800 font-serif">
+
+    <!-- Header -->
+    <header class="bg-amber-900 text-amber-100 border-b-4 border-amber-950 py-3 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-xs bg-amber-950 px-2 py-1 uppercase tracking-widest border border-amber-800">SOPORTE</span>
+                <h1 class="text-sm font-bold tracking-wider">BUZÓN DE CONTACTO Y VIGILANCIA</h1>
+            </div>
+            <nav class="text-xs space-x-4 uppercase font-sans">
+                <a href="index.html" class="hover:underline">Inicio</a>
+                <a href="reclutamiento.html" class="hover:underline">CIT-Net</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-xl mx-auto px-6 py-16">
+        <div class="bg-white p-8 border border-stone-300 shadow-sm space-y-6">
+            <div class="border-b border-stone-200 pb-4">
+                <h2 class="text-xl font-bold text-stone-900 font-sans uppercase">Mesa de Ayuda y Reportes Ciudadanos</h2>
+                <p class="text-xs text-stone-500 mt-1 font-mono">Envíenos sus datos para recibir notificaciones sobre el estado de las obras en su zona.</p>
+            </div>
+
+            <!-- Formulario -->
+            <div id="form-contacto" class="space-y-4 font-mono text-xs">
+                <div>
+                    <label class="block uppercase font-bold text-stone-700 mb-1">Nombre Completo:</label>
+                    <input type="text" id="contacto-nombre" placeholder="Ej. Carlos M." class="w-full p-2 border border-stone-300 focus:outline-none focus:border-amber-900">
+                </div>
+                <div>
+                    <label class="block uppercase font-bold text-stone-700 mb-1">Correo Electrónico:</label>
+                    <input type="email" id="contacto-email" placeholder="correo@ejemplo.com" class="w-full p-2 border border-stone-300 focus:outline-none focus:border-amber-900">
+                </div>
+                <div>
+                    <label class="block uppercase font-bold text-stone-700 mb-1">Mensaje o Inquietud:</label>
+                    <textarea id="contacto-msg" rows="3" placeholder="Describa su duda sobre las obras del centro..." class="w-full p-2 border border-stone-300 focus:outline-none focus:border-amber-900"></textarea>
+                </div>
+                <button onclick="enviarMensaje()" class="w-full bg-amber-900 hover:bg-amber-950 text-amber-100 uppercase py-3 tracking-widest font-bold transition-colors">
+                    Enviar Solicitud →
+                </button>
+            </div>
+
+            <!-- Respuesta simulada del servidor CORA (Oculta al inicio) -->
+            <div id="respuesta-cora" class="hidden bg-neutral-950 border border-red-800 p-6 text-red-500 font-mono space-y-3 scanlines">
+                <p class="text-xs font-bold text-red-400">[SERVIDOR DE VIGILANCIA CORA // RESPUESTA AUTOMÁTICA]</p>
+                <p class="text-[11px] text-stone-300 leading-relaxed">
+                    Alerta. Intruso detectado. Se ha registrado actividad sospechosa desde su dirección. Equipo de limpieza enviado a su ubicación.
+                </p>
+                <div class="bg-black p-3 border border-red-900 text-center">
+                    <p class="text-[10px] text-stone-400">CLAVE DE ACCESO TEMPORAL ASIGNADA A SU REGISTRO:</p>
+                    <p class="text-sm font-bold text-emerald-400 tracking-widest mt-1">CORA-7734</p>
+                </div>
+                <p class="text-[10px] text-stone-500 text-center">Utilice esta clave en el <a href="reclutamiento.html" class="underline text-red-400">Portal CIT-Net</a> antes de que la sesión expire.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function enviarMensaje() {
+            const email = document.getElementById('contacto-email').value.trim();
+            if(!email) {
+                alert("Por favor ingrese su correo electrónico.");
+                return;
+            }
+            // Ocultar formulario y mostrar respuesta del servidor CORA con la pista
+            document.getElementById('form-contacto').classList.add('hidden');
+            document.getElementById('respuesta-cora').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
