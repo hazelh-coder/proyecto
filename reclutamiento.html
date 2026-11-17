@@ -32,6 +32,7 @@
     <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full flex items-center justify-center">
         
         <!-- Pantalla de Login Limpia -->
+        <!-- Pantalla de Login -->
         <div id="login-screen" class="bg-white p-10 max-w-md w-full shadow-2xl border-t-8 border-stone-900 rounded-sm">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-extrabold text-stone-900 tracking-tighter">CIT-Net</h2>
@@ -40,20 +41,24 @@
             
             <form onsubmit="handleLogin(event)" class="space-y-6">
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">ID de Credencial o Contraseña</label>
-                    <input type="text" id="login-id" class="w-full bg-stone-50 border border-stone-300 p-3 rounded-md focus:ring-2 focus:ring-stone-800 outline-none font-mono text-sm" placeholder="Ej. CIT-00 o CORA-7734" required>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ID de Credencial</label>
+                    <!-- Añadimos id="login-id" -->
+                    <input type="text" id="login-id" class="w-full bg-stone-50 border border-stone-300 p-3 rounded-md focus:ring-2 focus:ring-stone-800 outline-none font-mono text-sm" placeholder="Ej. 277" required>
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Clave de Acceso</label>
+                    <!-- Añadimos id="login-pass" -->
                     <input type="password" id="login-pass" class="w-full bg-stone-50 border border-stone-300 p-3 rounded-md focus:ring-2 focus:ring-stone-800 outline-none" placeholder="••••••••" required>
                 </div>
+                <!-- Mensaje de error oculto si fallan los datos -->
+                <p id="error-msg" class="hidden text-xs text-red-600 font-mono font-bold text-center">Credenciales incorrectas. Acceso denegado por CORA.</p>
+                
                 <button type="submit" class="w-full bg-stone-900 text-white font-bold py-3 rounded-md hover:bg-black transition-colors uppercase tracking-wider text-xs">
                     Ingresar al Sistema
                 </button>
             </form>
             <div class="mt-6 text-center text-[11px] text-gray-400 font-mono">Monitoreo de IP por CORA activo. Si no cuenta con credenciales, utilice la pista del buzón.</div>
         </div>
-
         <!-- Terminal MS-DOS Retro (Se revela al logearse) -->
         <div id="terminal-screen" class="hidden w-full h-[550px] bg-black text-green-500 font-mono p-8 relative overflow-hidden rounded-lg border-4 border-gray-900 shadow-2xl">
             <div class="crt-effect"></div>
@@ -67,17 +72,32 @@
                 
                 <div class="pt-4 border-t border-green-900/50">
                     <p class="text-green-400">> C:\ARCHIVOS_CLASIFICADOS\DIRECTORIO_N2></p>
-                    <p class="mb-3">Listando expedientes de subsuelo (4)...</p>
+                    <p class="mb-3">Listando expedientes de subsuelo (5)...</p>
                     
                     <ul class="space-y-3 text-xs md:text-sm">
                         <li>
-                            <a href="assets/pdf/Expediente CIT-04 Gran Casino.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors font-bold block">
-                                > [PDF] Expediente_CIT-04-GranCasino.pdf
+                            <a href="assets/pdf/entidad-eco-norte.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors font-bold block">
+                                > [PDF] Expediente_Anomalia_CIT-04-EcoNorte.pdf
                             </a>
                         </li>
                         <li>
-                            <a href="assets/pdf/Expediente CIT-08 Banco.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors block">
-                                > [PDF] Analisis_Biomasa_Salitre.pdf
+                            <a href="assets/pdf/entidad-espejismo.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors block">
+                                > [PDF] Expediente_Anomalia_CIT-04_El_Espejismo_de_Oro.pdf
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/pdf/entidad-fachada.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors block">
+                                > [PDF] Expediente_Anomalia_CIT-04_La_Fachada.pdf
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/pdf/entidad-litigio.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors block">
+                                > [PDF] Expediente_Anomalia_CIT-04_El_Litigio.pdf
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/pdf/entidad-salitre.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors block">
+                                > [PDF] Expediente_Anomalia_CIT-04_El_Salitre.pdf
                             </a>
                         </li>
                         <li>
@@ -109,9 +129,19 @@
     <script>
         function handleLogin(event) {
             event.preventDefault();
-            // Ocultar pantalla de login y mostrar terminal MS-DOS
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('terminal-screen').classList.remove('hidden');
+            
+            const ingresadoId = document.getElementById('login-id').value.trim();
+            const ingresadoPass = document.getElementById('login-pass').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+
+            // Validar estrictamente ID: "277" y Contraseña: "teveo"
+            if (ingresadoId === "277" && ingresadoPass === "teveo") {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('terminal-screen').classList.remove('hidden');
+            } else {
+                // Mostrar mensaje de error si fallan
+                errorMsg.classList.remove('hidden');
+            }
         }
     </script>
 </body>
