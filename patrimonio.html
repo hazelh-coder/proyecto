@@ -3,77 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal, Privacidad y Patrimonio - CIT / CORA</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Marco Legal y Patrimonio | CIT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/effects.css">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans selection:bg-emerald-600 selection:text-white">
+<body class="bg-stone-100 text-gray-800 font-sans min-h-screen flex flex-col">
 
-    <!-- Header Moderno y Limpio -->
-    <header class="bg-white border-b border-slate-200 py-4 px-6 shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <span class="text-xs bg-slate-200 text-slate-800 font-bold px-2 py-1 uppercase tracking-widest rounded">Marco Legal</span>
-                <h1 class="text-sm font-bold tracking-wider text-slate-900">CIT / CORA - TÉRMINOS Y NORMATIVA</h1>
+    <!-- Navbar Blanca Limpia -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/img/1000311685.jpg" alt="Logo CIT" class="h-14 w-auto rounded-md shadow-sm border border-stone-200" onerror="this.style.display='none'">
+                    <span class="font-extrabold text-stone-900 tracking-tight text-sm md:text-base">CIT</span>
+                </a>
+                <nav class="flex flex-wrap gap-4 md:space-x-6 text-xs md:text-sm">
+                    <a href="index.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Inicio</a>
+                    <a href="inmuebles.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Portafolio</a>
+                    <a href="reclutamiento.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">CIT-Net</a>
+                    <a href="patrimonio.html" class="text-stone-900 font-bold border-b-2 border-stone-900 pb-1">Legal y Ética</a>
+                    <a href="contacto.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Contacto</a>
+                </nav>
             </div>
-            <nav class="mt-2 md:mt-0 text-xs space-x-4 uppercase tracking-wider font-semibold text-slate-600">
-                <a href="index.html" class="hover:text-emerald-700">Inicio</a>
-                <a href="inmuebles.html" class="hover:text-emerald-700">Portafolio (CORA)</a>
-                <a href="mapa.html" class="hover:text-emerald-700">Cartografía</a>
-                <a href="reclutamiento.html" class="hover:text-emerald-700">CIT-Net</a>
-                <a href="foro.html" class="hover:text-emerald-700">Denuncias</a>
-                <a href="patrimonio.html" class="underline text-emerald-700 font-bold">Patrimonio</a>
-            </nav>
         </div>
     </header>
 
     <!-- Contenido Principal -->
-    <main class="max-w-4xl mx-auto px-6 py-16 space-y-12">
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full space-y-12">
         
-        <!-- Términos y Condiciones Corporativos (Con el Secreto camuflado) -->
-        <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
-            <div class="border-b border-slate-100 pb-4">
-                <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight font-serif">Términos y Condiciones de Uso y Riesgos Laborales</h2>
-                <p class="text-xs text-slate-500 mt-1 font-mono">Última actualización: Actualización Normativa Federal 2026</p>
+        <!-- Términos y Condiciones Corporativos -->
+        <div class="bg-white p-8 rounded shadow-sm border border-stone-200 space-y-6">
+            <div class="border-b border-stone-200 pb-4">
+                <h2 class="text-2xl font-extrabold text-stone-900 tracking-tight font-sans">Términos y Condiciones y Riesgos Laborales</h2>
+                <p class="text-xs text-gray-500 mt-1 font-mono">Actualización Normativa Federal 2026</p>
             </div>
 
-            <div class="text-xs md:text-sm text-slate-600 leading-relaxed space-y-4 font-mono">
+            <div class="text-xs md:text-sm text-gray-700 leading-relaxed space-y-4 font-mono">
                 <p>
-                    1. <span class="font-bold text-slate-900">De las responsabilidades contractuales:</span> Todo contratista, voluntario o personal técnico asociado al Consorcio de Infraestructura de Tampico (CIT) acepta someterse a los protocolos de evaluación dictados por Consultoría de Riesgo Arquitectónico (CORA).
+                    1. <span class="font-bold text-stone-900">De las responsabilidades contractuales:</span> Todo contratista o voluntario asociado al Consorcio Inmobiliario Tamesí (CIT) acepta someterse a las evaluaciones de subsuelo dictadas por CORA.
                 </p>
                 <p>
-                    2. <span class="font-bold text-slate-900">De las directrices operativas en subsuelo:</span> Queda estrictamente prohibida la alteración de los sellos perimetrales instalados en las bóvedas del centro histórico sin la supervisión directa de un oficial de contención certificado.
+                    2. <span class="font-bold text-stone-900">De los sellos perimetrales:</span> Queda prohibida la alteración de los bloqueos instalados en las bóvedas del centro histórico sin la supervisión de un oficial de contención.
                 </p>
-                <!-- Cláusula Absurda / Secreto del ARG camuflada entre el texto normal -->
-                <p class="bg-amber-50 p-3 border-l-2 border-amber-600 text-amber-900">
-                    3. <span class="font-bold">Exención de responsabilidad por anomalías:</span> El CIT no asume ninguna clase de responsabilidad legal o médica por desorientación topológica, asfixia por biomasa, exposición a frecuencias acústicas no ionizantes o alteraciones psicológicas severas al bajar al Nivel -2 o superiores durante las jornadas de inspección nocturna.
+                <!-- Cláusula Absurda / Secreto del ARG -->
+                <p class="bg-amber-50 p-4 border-l-4 border-amber-800 text-amber-900">
+                    3. <span class="font-bold">Exención de responsabilidad por anomalías:</span> El CIT no asume responsabilidad médica ni espiritual por desorientación topológica, asfixia por biomasa, exposición a frecuencias no ionizantes o alteraciones psicológicas severas al descender al <strong class="text-red-700">Nivel -2 o superiores</strong> durante inspecciones nocturnas.
                 </p>
                 <p>
-                    4. <span class="font-bold text-slate-900">Confidencialidad absoluta:</span> Cualquier avistamiento, sonido rítmico en frecuencias Morse o variación térmica en muros portantes debe reportarse de inmediato a la central, quedando prohibida su divulgación pública.
+                    4. <span class="font-bold text-stone-900">Confidencialidad absoluta:</span> Cualquier avistamiento o sonido rítmico en frecuencias extrañas en muros portantes debe reportarse de inmediato a la central.
                 </p>
             </div>
         </div>
 
-        <!-- EL ESCUDO ÉTICO (Obligatorio, claro y fuera de la ficción) -->
-        <div class="bg-emerald-900 text-emerald-50 p-8 rounded-2xl shadow-lg space-y-4 border-2 border-emerald-700">
+        <!-- EL ESCUDO ÉTICO (Obligatorio, fuera de la ficción) -->
+        <div class="bg-stone-900 text-stone-100 p-8 rounded-xl shadow-lg space-y-4 border-2 border-stone-700">
             <div class="flex items-center space-x-2">
-                <span class="text-xs bg-emerald-700 px-2 py-0.5 font-mono uppercase tracking-widest text-emerald-200">Aviso Académico y Comunitario</span>
+                <span class="text-xs bg-red-900 px-2 py-0.5 font-mono uppercase tracking-widest text-white font-bold">Aviso Académico y Comunitario</span>
             </div>
             <h3 class="text-xl font-bold tracking-tight font-sans">Compromiso con la Realidad y el Patrimonio</h3>
-            <p class="text-xs md:text-sm text-emerald-100 leading-relaxed">
-                "Catálogo 277: Los Sellos del Puerto" es un proyecto universitario de narrativa transmedia[cite: 2]. Las organizaciones CIT y CORA, así como los eventos de conspiración o terror descritos en esta plataforma, son <strong>100% ficticios</strong>[cite: 2]. 
+            <p class="text-xs md:text-sm text-stone-300 leading-relaxed">
+                "Catálogo 277: Los Sellos del Puerto" es un proyecto universitario de narrativa transmedia. Las organizaciones CIT y CORA, así como los eventos de conspiración o terror descritos en esta plataforma, son <strong>100% ficticios</strong>.
             </p>
-            <p class="text-xs md:text-sm text-emerald-100 leading-relaxed">
-                <strong>No fomentes el allanamiento (Urbex)</strong> ni visites inmuebles en riesgo estructural real[cite: 2]. La degradación de nuestros edificios históricos es un problema real que requiere atención institucional y conciencia ciudadana. Protege el patrimonio de tu ciudad[cite: 2].
+            <p class="text-xs md:text-sm text-stone-300 leading-relaxed">
+                <strong>No fomentes el allanamiento (Urbex)</strong> ni visites inmuebles en riesgo estructural real. La degradación de nuestros edificios históricos es un problema real que requiere conciencia ciudadana y atención institucional. Protege el patrimonio de tu ciudad.
             </p>
         </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 py-8 text-center text-xs text-slate-500 font-mono">
-        <p>Plataforma Transmedia de Salvaguarda Patrimonial © 2026. Todos los derechos reservados.</p>
+    <!-- Footer Corporativo -->
+    <footer class="bg-stone-900 text-stone-400 py-8 mt-auto border-t-4 border-stone-700 text-center">
+        <h4 class="text-white font-bold tracking-widest mb-1 text-sm">CONSORCIO INMOBILIARIO TAMESÍ</h4>
+        <p class="text-xs">Tampico, Tamaulipas. México. © 2026</p>
     </footer>
 
 </body>

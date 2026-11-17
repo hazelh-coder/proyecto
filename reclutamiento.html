@@ -3,122 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIT-Net - Portal de Empleados</title>
-    <!-- Tailwind CSS CDN -->
+    <title>CIT-Net // Intranet Corporativa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/effects.css">
 </head>
-<body class="bg-stone-100 text-stone-800 font-serif transition-colors duration-500" id="body-portal">
+<body class="bg-stone-100 text-gray-800 font-sans min-h-screen flex flex-col">
 
-    <!-- Header Institucional (Visible en fachada) -->
-    <header class="bg-amber-900 text-amber-100 border-b-4 border-amber-950 py-3 px-6 shadow-md" id="header-portal">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <span class="text-xs bg-amber-950 px-2 py-1 uppercase tracking-widest border border-amber-800">CIT-NET</span>
-                <h1 class="text-sm font-bold tracking-wider">PORTAL INTERNO DE ACCESO RESTRINGIDO</h1>
+    <!-- Navbar Blanca Limpia -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/img/1000311685.jpg" alt="Logo CIT" class="h-14 w-auto rounded-md shadow-sm border border-stone-200" onerror="this.style.display='none'">
+                    <span class="font-extrabold text-stone-900 tracking-tight text-sm md:text-base">CIT-Net</span>
+                </a>
+                <nav class="flex flex-wrap gap-4 md:space-x-6 text-xs md:text-sm">
+                    <a href="index.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Inicio</a>
+                    <a href="inmuebles.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Portafolio</a>
+                    <a href="reclutamiento.html" class="text-stone-900 font-bold border-b-2 border-stone-900 pb-1">CIT-Net</a>
+                    <a href="patrimonio.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Legal y Ética</a>
+                    <a href="contacto.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Contacto</a>
+                </nav>
             </div>
-            <nav class="mt-2 md:mt-0 text-xs space-x-4 uppercase tracking-wider font-sans">
-                <a href="index.html" class="hover:underline">Inicio</a>
-                <a href="inmuebles.html" class="hover:underline">Portafolio (CORA)</a>
-                <a href="mapa.html" class="hover:underline">Cartografía</a>
-                <a href="reclutamiento.html" class="underline font-bold">CIT-Net</a>
-                <a href="foro.html" class="hover:underline">Denuncias</a>
-                <a href="patrimonio.html" class="hover:underline text-amber-300">Patrimonio</a>
-            </nav>
         </div>
     </header>
 
     <!-- Contenido Principal -->
-    <main class="max-w-3xl mx-auto px-6 py-16">
+    <main class="flex-grow max-w-4xl mx-auto px-4 py-16 w-full flex items-center justify-center">
         
-        <!-- FASE 1: Fachada Corporativa (Pantalla Blanca y Estéril) -->
-        <div id="fachada-login" class="bg-white p-8 border border-stone-300 shadow-sm space-y-6">
-            <div class="border-b border-stone-200 pb-4">
-                <h2 class="text-xl font-bold text-stone-900 font-sans uppercase tracking-tight">Acceso a Red Corporativa CIT-Net</h2>
-                <p class="text-xs text-stone-500 mt-1 font-mono">Ingrese sus credenciales corporativas o clave de autorización asignada por supervisión.</p>
+        <!-- Pantalla de Login Limpia -->
+        <div id="login-screen" class="bg-white p-10 max-w-md w-full shadow-2xl border-t-8 border-stone-900 rounded-sm">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-extrabold text-stone-900 tracking-tighter">CIT-Net</h2>
+                <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Portal de Intranet Corporativa</p>
             </div>
-            <div class="space-y-4">
+            
+            <form onsubmit="handleLogin(event)" class="space-y-6">
                 <div>
-                    <label class="block text-xs font-mono uppercase text-stone-700 font-bold mb-1">Usuario ID / Matrícula:</label>
-                    <input type="text" id="input-user" placeholder="Ej. CIT-8834" class="w-full p-2 border border-stone-300 text-xs font-mono focus:outline-none focus:border-amber-900 bg-stone-50">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">ID de Credencial o Contraseña</label>
+                    <input type="text" id="login-id" class="w-full bg-stone-50 border border-stone-300 p-3 rounded-md focus:ring-2 focus:ring-stone-800 outline-none font-mono text-sm" placeholder="Ej. CIT-00 o CORA-7734" required>
                 </div>
                 <div>
-                    <label class="block text-xs font-mono uppercase text-stone-700 font-bold mb-1">Contraseña de Red:</label>
-                    <input type="password" id="input-pass" placeholder="••••••••••••" class="w-full p-2 border border-stone-300 text-xs font-mono focus:outline-none focus:border-amber-900 bg-stone-50">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Clave de Acceso</label>
+                    <input type="password" id="login-pass" class="w-full bg-stone-50 border border-stone-300 p-3 rounded-md focus:ring-2 focus:ring-stone-800 outline-none" placeholder="••••••••" required>
                 </div>
-                <p id="error-login" class="text-xs text-red-600 font-mono hidden">Credenciales inválidas. Acceso denegado por el servidor central.</p>
-            </div>
-            <button onclick="intentarAcceso()" class="w-full bg-stone-900 hover:bg-amber-900 text-white font-mono text-xs uppercase py-3 tracking-widest transition-colors font-bold shadow">
-                Acceso Restringido →
-            </button>
-            <div class="text-[10px] text-stone-400 font-mono text-center pt-2">
-                ¿No cuenta con clave? Solicite acceso a través del <a href="foro.html" class="underline text-stone-600">Buzón de Contacto</a>.
-            </div>
+                <button type="submit" class="w-full bg-stone-900 text-white font-bold py-3 rounded-md hover:bg-black transition-colors uppercase tracking-wider text-xs">
+                    Ingresar al Sistema
+                </button>
+            </form>
+            <div class="mt-6 text-center text-[11px] text-gray-400 font-mono">Monitoreo de IP por CORA activo. Si no cuenta con credenciales, utilice la pista del buzón.</div>
         </div>
 
-        <!-- FASE 2: El Secreto / Terminal MS-DOS (Oculto hasta ingresar la clave correcta) -->
-        <div id="terminal-secreta" class="hidden bg-black border-2 border-emerald-600 p-8 text-emerald-500 font-mono shadow-2xl relative scanlines space-y-6">
-            <div class="flex justify-between items-center border-b border-emerald-800 pb-3">
-                <span class="text-xs font-bold text-emerald-400">[TERMINAL CIT-NET // NIVEL DE ACCESIBILIDAD: OMEGA]</span>
-                <button onclick="cerrarSesion()" class="text-xs bg-emerald-950 text-emerald-300 border border-emerald-700 px-2 py-1 hover:bg-emerald-900">Cerrar Sesión</button>
-            </div>
-
-            <div class="space-y-2 text-xs leading-relaxed">
-                <p class="text-emerald-300">> Conexión establecida con servidor subterráneo central.</p>
-                <p class="text-emerald-300">> Descargando archivos clasificados y bitácoras de contención...</p>
-                <p class="text-emerald-500 font-bold mt-2">[!] ADVERTENCIA: Los siguientes documentos contienen registros de entidades y protocolos de aislamiento no autorizados para el público general.</p>
-            </div>
-
-            <!-- Archivos Definitivos / Enlaces de Descarga o Visualización -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                <div class="border border-emerald-800 p-4 bg-emerald-950/20 space-y-2">
-                    <span class="text-[10px] text-emerald-400 bg-emerald-900/50 px-2 py-0.5">DOCUMENTO 01-PDF</span>
-                    <h3 class="font-bold text-emerald-200 text-sm">Inventario de Entidades Subterráneas</h3>
-                    <p class="text-[11px] text-emerald-600/80">Archivos manchados de café con clasificaciones de presencias en los sótanos del Palacio Municipal y Aduana.</p>
-                    <button onclick="alert('Descargando inventario_entidades_clasificado.pdf (Simulado)...')" class="text-[10px] bg-emerald-800 hover:bg-emerald-700 text-black font-bold px-3 py-1 uppercase">Descargar Archivo</button>
+        <!-- Terminal MS-DOS Retro (Se revela al logearse) -->
+        <div id="terminal-screen" class="hidden w-full h-[550px] bg-black text-green-500 font-mono p-8 relative overflow-hidden rounded-lg border-4 border-gray-900 shadow-2xl">
+            <div class="crt-effect"></div>
+            <div class="relative z-20 h-full overflow-y-auto space-y-3">
+                <p>CIT-OS [Versión 4.2.88]</p>
+                <p class="mb-4">(c) Corporativo Inmobiliario Tamesí. Todos los derechos reservados.</p>
+                
+                <p>> login.exe -admin --secure</p>
+                <p class="text-green-300">AUTENTICANDO CREDENCIALES... <span class="text-white font-bold">ACCESO CONCEDIDO</span></p>
+                <p class="text-red-500 blink uppercase tracking-widest font-bold text-xs">! Advertencia: Protocolo de Cuarentena Activo !</p>
+                
+                <div class="pt-4 border-t border-green-900/50">
+                    <p class="text-green-400">> C:\ARCHIVOS_CLASIFICADOS\DIRECTORIO_N2></p>
+                    <p class="mb-3">Listando expedientes de subsuelo (4)...</p>
+                    
+                    <ul class="space-y-3 text-xs md:text-sm">
+                        <li>
+                            <a href="assets/pdf/Expediente CIT-04 Gran Casino.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors font-bold block">
+                                > [PDF] Expediente_CIT-04-GranCasino.pdf
+                            </a>
+                        </li>
+                        <li>
+                            <a href="assets/pdf/Expediente CIT-08 Banco.pdf" target="_blank" class="hover:bg-green-500 hover:text-black p-1 transition-colors block">
+                                > [PDF] Analisis_Biomasa_Salitre.pdf
+                            </a>
+                        </li>
+                        <li>
+                            <span class="text-gray-600 line-through p-1 block">> [DOC] Lista_Bajas_Contratistas.doc (Archivo Corrupto / Eliminado)</span>
+                        </li>
+                        <li>
+                            <span class="text-red-400 hover:bg-red-600 hover:text-white p-1 font-bold block cursor-pointer" onclick="alert('[AUDIO CORrupto]: Se escuchan golpes rítmicos contra una superficie metálica a 12 metros de profundidad.')">
+                                > [WAV] Audio_Filtracion_Nivel-2.wav (NO ESCUCHAR)
+                            </span>
+                        </li>
+                    </ul>
                 </div>
-
-                <div class="border border-emerald-800 p-4 bg-emerald-950/20 space-y-2">
-                    <span class="text-[10px] text-emerald-400 bg-emerald-900/50 px-2 py-0.5">AUDIO REPRODUCCIÓN</span>
-                    <h3 class="font-bold text-emerald-200 text-sm">Grabaciones de Campo / Ruidos en Muros</h3>
-                    <p class="text-[11px] text-emerald-600/80">Audios perturbadores filtrados desde las líneas de telégrafos durante la madrugada.</p>
-                    <button onclick="alert('Reproduciendo frecuencia_subterranea_04.wav (Audio simulado)...')" class="text-[10px] bg-emerald-800 hover:bg-emerald-700 text-black font-bold px-3 py-1 uppercase">Reproducir Audio</button>
+                
+                <div class="pt-8 text-xs text-stone-500">
+                    <p>Escriba "exit" o recargue la página para cerrar sesión de manera segura.</p>
                 </div>
-            </div>
-
-            <div class="pt-4 border-t border-emerald-900 text-center">
-                <p class="text-[10px] text-emerald-600">CIT-Net Terminal Segura. Cualquier intento de extracción de datos fuera de la red local será rastreado por CORA.</p>
             </div>
         </div>
 
     </main>
 
-    <!-- Script de validación de contraseña y transformación -->
+    <!-- Footer Corporativo -->
+    <footer class="bg-stone-900 text-stone-400 py-8 mt-auto border-t-4 border-stone-700 text-center">
+        <h4 class="text-white font-bold tracking-widest mb-1 text-sm">CONSORCIO INMOBILIARIO TAMESÍ</h4>
+        <p class="text-xs">Tampico, Tamaulipas. México. © 2026</p>
+    </footer>
+
+    <!-- Lógica de Acceso a Terminal -->
     <script>
-        function intentarAcceso() {
-            const pass = document.getElementById('input-pass').value.trim();
-            const errorLogin = document.getElementById('error-login');
-            
-            // Contraseña secreta que el jugador obtiene mediante el buzón o pistas
-            const PASSWORD_SECRETA = "CORA-7734";
-
-            if (pass === PASSWORD_SECRETA) {
-                document.getElementById('fachada-login').classList.add('hidden');
-                document.getElementById('terminal-secreta').classList.remove('hidden');
-                document.getElementById('body-portal').classList.add('bg-neutral-950');
-                document.getElementById('header-portal').classList.add('bg-emerald-950', 'border-emerald-900');
-            } else {
-                errorLogin.classList.remove('hidden');
-            }
-        }
-
-        function cerrarSesion() {
-            document.getElementById('terminal-secreta').classList.add('hidden');
-            document.getElementById('fachada-login').classList.remove('hidden');
-            document.getElementById('body-portal').classList.remove('bg-neutral-950');
-            document.getElementById('header-portal').classList.remove('bg-emerald-950', 'border-emerald-900');
-            document.getElementById('input-pass').value = '';
-            document.getElementById('error-login').classList.add('hidden');
+        function handleLogin(event) {
+            event.preventDefault();
+            // Ocultar pantalla de login y mostrar terminal MS-DOS
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('terminal-screen').classList.remove('hidden');
         }
     </script>
 </body>

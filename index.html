@@ -3,88 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIT - Consorcio de Infraestructura de Tampico</title>
-    <!-- Tailwind CSS CDN -->
+    <title>CIT | Consorcio Inmobiliario Tamesí</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Estilos personalizados y efectos analógicos -->
     <link rel="stylesheet" href="css/effects.css">
 </head>
-<body class="bg-stone-100 text-stone-800 font-serif selection:bg-amber-900 selection:text-white">
+<body class="bg-stone-100 text-gray-800 font-sans min-h-screen flex flex-col">
 
-    <!-- Barra Superior Institucional (CIT) -->
-    <header class="bg-amber-900 text-amber-100 border-b-4 border-amber-950 py-3 px-6 shadow-md">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <span class="text-xs bg-amber-950 px-2 py-1 uppercase tracking-widest border border-amber-800">CIT - OFICIAL</span>
-                <h1 class="text-sm font-bold tracking-wider">CONSORCIO DE INFRAESTRUCTURA DE TAMPICO</h1>
+    <!-- Navbar Blanca Limpia -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="assets/img/1000311685.jpg" alt="Logo CIT" class="h-14 w-auto rounded-md shadow-sm border border-stone-200" onerror="this.style.display='none'">
+                    <span class="font-extrabold text-stone-900 tracking-tight text-sm md:text-base">CIT</span>
+                </a>
+                <nav class="flex flex-wrap gap-4 md:space-x-6 text-xs md:text-sm">
+                    <a href="index.html" class="text-stone-900 font-bold border-b-2 border-stone-900 pb-1">Inicio</a>
+                    <a href="inmuebles.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Portafolio</a>
+                    <a href="reclutamiento.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">CIT-Net</a>
+                    <a href="patrimonio.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Legal y Ética</a>
+                    <a href="contacto.html" class="text-gray-600 hover:text-stone-900 font-semibold transition-colors">Contacto</a>
+                </nav>
             </div>
-            <nav class="mt-2 md:mt-0 text-xs space-x-4 uppercase tracking-wider font-sans">
-                <a href="index.html" class="underline font-bold">Inicio</a>
-                <a href="inmuebles.html" class="hover:underline">Portafolio (CORA)</a>
-                <a href="mapa.html" class="hover:underline">Cartografía</a>
-                <a href="reclutamiento.html" class="hover:underline">CIT-Net</a>
-                <a href="foro.html" class="hover:underline">Denuncias</a>
-                <a href="patrimonio.html" class="hover:underline text-amber-300">Patrimonio</a>
-            </nav>
         </div>
     </header>
 
-    <!-- Contenido Principal: Inicio y Compromiso Institucional -->
-    <main class="max-w-5xl mx-auto px-6 py-12">
-        
-        <!-- Comunicado Institucional / INAH -->
-        <div class="bg-amber-50 border-l-4 border-amber-800 p-6 mb-8 shadow-sm space-y-3">
-            <p class="text-xs font-mono uppercase text-amber-900 font-semibold">Comunicado de Coordinación Técnica y Normativa</p>
-            <p class="text-sm leading-relaxed text-stone-700">
-                El Consorcio de Infraestructura de Tampico (CIT) reafirma su compromiso con las normativas del INAH, garantizando la rigurosa protección de las <span class="font-bold text-amber-950">bóvedas catalanas</span> y la <span class="font-bold text-amber-950">herrería francesa</span> en cada intervención del centro histórico.
-            </p>
-            
-            <!-- EL SECRETO (Texto Oculto que solo se ve al seleccionarlo con el cursor) -->
-            <p class="text-xs font-mono select-all text-amber-50 bg-amber-50 p-1 transition-colors hover:text-stone-900 cursor-help" title="Selecciona este texto para revelar">
-                [MEMORÁNDUM FILTRADO] El INAH sigue bloqueando el perímetro. Las bóvedas están cediendo. Si la entidad sale a la calle, el consorcio negará todo conocimiento.
-            </p>
+    <!-- Contenido Principal -->
+    <main class="flex-grow">
+        <!-- Hero Section con Efecto Glitch -->
+        <div class="hero-container relative bg-stone-800 text-white overflow-hidden py-24 flex flex-col items-center justify-center text-center px-4 cursor-default">
+            <div class="absolute inset-0 opacity-20 bg-[url('assets/img/banco.jpeg')] bg-cover bg-center"></div>
+            <div class="relative z-10 max-w-4xl flex flex-col items-center">
+                <img src="assets/img/1000311685.jpg" alt="Consorcio Inmobiliario Tamesí" class="glitch-img h-36 w-auto mb-8 rounded-lg shadow-2xl border-4 border-stone-700 transition-all duration-75" onerror="this.style.display='none'">
+                
+                <!-- Slogan Dinámico -->
+                <h1 class="slogan-normal text-3xl md:text-5xl font-extrabold tracking-tight mb-6">
+                    Construyendo el futuro de Tampico, cimentando su historia.
+                </h1>
+                <h1 class="slogan-glitch hidden text-3xl md:text-5xl font-extrabold tracking-tight mb-6 text-red-600 uppercase font-mono bg-black p-2">
+                    Despejando el subsuelo. Preparando la extracción.
+                </h1>
+                
+                <p class="text-base md:text-lg text-stone-300 font-light max-w-2xl mb-8">
+                    Líderes indiscutibles en renovación patrimonial, gestión de obra pesada y evaluación de terrenos complejos.
+                </p>
+
+                <a href="inmuebles.html" class="bg-stone-900 hover:bg-black text-white border border-stone-600 px-6 py-3 rounded font-semibold text-sm transition-colors">
+                    Explorar Zonas de Intervención →
+                </a>
+            </div>
         </div>
 
-        <!-- Portada / Hero Section -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-            <div class="md:col-span-2 space-y-6">
-                <h2 id="eslogan-main" class="text-3xl md:text-4xl font-bold tracking-tight text-amber-950">
-                    "Construyendo el futuro de Tampico, cimentando su historia".
-                </h2>
-                <p class="text-base leading-relaxed text-stone-700">
-                    Nuestras directrices de desarrollo urbano aseguran la modernización turística y la estabilidad estructural de los inmuebles protegidos, implementando tecnología de evaluación de riesgos de vanguardia junto a nuestros consultores asociados.
-                </p>
-                <div class="pt-4">
-                    <a href="inmuebles.html" class="inline-block bg-amber-900 text-amber-100 px-6 py-3 text-xs uppercase tracking-widest font-sans font-bold hover:bg-amber-950 transition-colors shadow">
-                        Ver Portafolio de Proyectos y Zonas de Intervención →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Contenedor de Fotografía con Micro-Glitch al pasar el cursor -->
-            <div id="hero-card" class="relative group cursor-pointer overflow-hidden border-4 border-stone-300 shadow-lg bg-stone-300 h-72 flex items-center justify-center transition-colors">
-                <!-- Estado Normal (Fachada Corporativa / Planos) -->
-                <div id="hero-normal" class="absolute inset-0 bg-stone-200 flex flex-col items-center justify-center p-4 text-center transition-opacity duration-300 group-hover:opacity-0">
-                    <svg class="w-16 h-16 text-stone-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                    <span class="text-xs uppercase font-mono tracking-widest text-stone-600">Archivo CIT - Zona Centro</span>
-                    <span class="text-[10px] text-stone-500 mt-1">[ Estado: Intervención Activa ]</span>
-                </div>
-                <!-- Estado Glitch (Revelado al hacer hover) -->
-                <div id="hero-glitch" class="absolute inset-0 bg-neutral-950 text-red-500 flex flex-col items-center justify-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-150 scanlines">
-                    <span class="text-xs font-mono uppercase tracking-widest text-red-400 font-bold">[!] ALERTA DE SUBSUELO</span>
-                    <p class="text-[11px] text-stone-300 mt-2 font-mono font-semibold">"Despejando el subsuelo"</p>
-                </div>
-            </div>
-        </section>
-
+        <!-- Compromiso e INAH (Texto oculto) -->
+        <div class="max-w-4xl mx-auto px-4 py-16 bg-stone-100">
+            <h2 class="text-2xl font-bold mb-6 text-stone-800 border-b-2 border-stone-300 pb-2">Compromiso Patrimonial</h2>
+            <p class="text-gray-700 leading-relaxed text-justify">
+                En el Consorcio Inmobiliario Tamesí (CIT), nuestra prioridad es respetar los lineamientos históricos del puerto. Trabajamos estrictamente alineados con los mandatos del INAH, garantizando la preservación visual de las <strong>bóvedas catalanas</strong>, la mampostería original y la herrería de influencia francesa. Modernizamos el interior para el siglo XXI, sin que el exterior pierda un ápice de su gloria porfiriana.
+            </p>
+            <!-- TEXTO OCULTO ARG (Mismo color del fondo stone-100) -->
+            <p class="secret-text text-sm mt-4 select-all italic font-serif">
+                El INAH sigue bloqueando el perímetro. Las bóvedas están cediendo. Si la entidad sale a la calle, el consorcio negará todo conocimiento. No envíen más personal al sótano.
+            </p>
+        </div>
     </main>
 
-    <!-- Pie de página burocrático -->
-    <footer class="bg-stone-200 border-t border-stone-300 mt-20 py-6 text-center text-xs text-stone-600 font-mono">
-        <p>Consorcio de Infraestructura de Tampico (CIT) © 2026. Todos los derechos reservados.</p>
+    <!-- Footer Corporativo -->
+    <footer class="bg-stone-900 text-stone-400 py-8 mt-auto border-t-4 border-stone-700 text-center">
+        <h4 class="text-white font-bold tracking-widest mb-1 text-sm">CONSORCIO INMOBILIARIO TAMESÍ</h4>
+        <p class="text-xs">Tampico, Tamaulipas. México. © 2026</p>
     </footer>
 
-    <!-- Script de interactividad -->
-    <script src="js/main.js"></script>
 </body>
 </html>
